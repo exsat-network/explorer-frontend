@@ -15,9 +15,9 @@ const Settings = () => {
       <PopoverTrigger>
         <IconButton
           variant="simple"
-          colorScheme="blue"
+          colorScheme="orange"
           aria-label="User settings"
-          icon={ <IconSvg name="gear_slim" boxSize={ 5 }/> }
+          icon={ <IconSvg name="gear_slim" boxSize={ 5 } color="#ff9900"/> }
           p="1px"
           boxSize={ 5 }
           onClick={ onToggle }

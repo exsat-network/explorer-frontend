@@ -79,6 +79,7 @@ const StatsWidget = ({
             borderRadius="base"
             display={{ base: 'none', lg: 'block' }}
             flexShrink={ 0 }
+	    color="#ff9900"
           />
         ) }
         <Box w="100%">
