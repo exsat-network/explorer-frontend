@@ -8,7 +8,7 @@ import Hint from 'ui/shared/Hint';
 import IconSvg, { type IconName } from 'ui/shared/IconSvg';
 import TruncatedValue from 'ui/shared/TruncatedValue';
 
-type Props = {
+export type Props = {
   className?: string;
   label: string;
   value: string | React.ReactNode;
@@ -82,7 +82,7 @@ const StatsWidget = ({
 	    color="#ff9900"
           />
         ) }
-        <Box w="100%">
+        <Box w={{ base: '100%', lg: icon ? 'calc(100% - 48px)' : '100%' }}>
           <Skeleton
             isLoaded={ !isLoading }
             color="text_secondary"
@@ -90,7 +90,7 @@ const StatsWidget = ({
             lineHeight="16px"
             w="fit-content"
           >
-            <span>{ label }</span>
+            <h2>{ label }</h2>
           </Skeleton>
           <Skeleton
             isLoaded={ !isLoading }

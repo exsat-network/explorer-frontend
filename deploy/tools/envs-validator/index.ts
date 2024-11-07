@@ -20,6 +20,7 @@ async function run() {
         return result;
       }, {} as Record<string, string>);
 
+    printDeprecationWarning(appEnvs);
     await checkPlaceholdersCongruity(appEnvs);
     await validateEnvs(appEnvs);
 
@@ -38,6 +39,7 @@ async function validateEnvs(appEnvs: Record<string, string>) {
       'NEXT_PUBLIC_MARKETPLACE_CONFIG_URL',
       'NEXT_PUBLIC_MARKETPLACE_CATEGORIES_URL',
       'NEXT_PUBLIC_MARKETPLACE_SECURITY_REPORTS_URL',
+      'NEXT_PUBLIC_MARKETPLACE_GRAPH_LINKS_URL',
       'NEXT_PUBLIC_FOOTER_LINKS',
     ];
 
@@ -134,4 +136,27 @@ function getEnvsPlaceholders(filePath: string): Promise<Array<string>> {
       resolve(variables.filter(Boolean));
     });
   });
+}
+
+function printDeprecationWarning(envsMap: Record<string, string>) {
+  if (
+    envsMap.NEXT_PUBLIC_HOMEPAGE_PLATE_TEXT_COLOR ||
+    envsMap.NEXT_PUBLIC_HOMEPAGE_PLATE_BACKGROUND
+  ) {
+    console.log('❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗');
+    // eslint-disable-next-line max-len
+    console.warn('The NEXT_PUBLIC_HOMEPAGE_PLATE_TEXT_COLOR and NEXT_PUBLIC_HOMEPAGE_PLATE_BACKGROUND variables are now deprecated and will be removed in the next release. Please migrate to the NEXT_PUBLIC_HOMEPAGE_HERO_BANNER_CONFIG variable.');
+    console.log('❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗\n');
+  }
+
+  if (
+    envsMap.NEXT_PUBLIC_AUTH0_CLIENT_ID ||
+    envsMap.NEXT_PUBLIC_AUTH_URL ||
+    envsMap.NEXT_PUBLIC_LOGOUT_URL
+  ) {
+    console.log('❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗');
+    // eslint-disable-next-line max-len
+    console.warn('The NEXT_PUBLIC_AUTH0_CLIENT_ID, NEXT_PUBLIC_AUTH_URL and NEXT_PUBLIC_LOGOUT_URL variables are now deprecated and will be removed in the next release.');
+    console.log('❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗\n');
+  }
 }

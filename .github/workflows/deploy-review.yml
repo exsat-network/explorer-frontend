@@ -11,16 +11,21 @@ on:
           options:
             - none
             - arbitrum
+            - arbitrum_nova
             - base
             - celo_alfajores
+            - garnet
             - gnosis
             - eth
             - eth_sepolia
             - eth_goerli
+            - filecoin
             - optimism
+            - optimism_celestia
             - optimism_sepolia
             - polygon
             - rootstock
+            - shibarium
             - stability
             - zkevm
             - zksync
